@@ -1,0 +1,19 @@
+# package directories
+node_modules
+jspm_packages
+
+# Serverless directories
+.serverless
+.serverless.tmp
+
+# Webpack directories
+.webpack
+
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
+ormconfig.json
+src/infrastructure/db/postgres/migration/*.js

@@ -1,0 +1,52 @@
+[
+  {
+    "name": "default",
+    "type": "postgres",
+    "host": "localhost",
+    "port": 5432,
+    "username": "postgres",
+    "password": "password",
+    "database": "matsuhub_development",
+    "synchronize": false,
+    "logging": false,
+    "entities": [
+      "src/models/*.ts"
+    ],
+    "migrations": [
+      "src/infrastructure/db/postgres/migration/**/*.ts"
+    ],
+    "subscribers": [
+      "src/subscriber/**/*.ts"
+    ],
+    "cli": {
+      "entitiesDir": "src/models",
+      "migrationsDir": "src/infrastructure/db/postgres/migration",
+      "subscribersDir": "src/subscriber"
+    }
+  },
+  {
+    "name": "test",
+    "type": "postgres",
+    "host": "matsuhub_test",
+    "port": 5432,
+    "username": "postgres",
+    "password": "password",
+    "database": "test",
+    "synchronize": false,
+    "logging": false,
+    "entities": [
+      "src/models/*.ts"
+    ],
+    "migrations": [
+      "src/infrastructure/db/postgres/migration/**/*.ts"
+    ],
+    "subscribers": [
+      "src/subscriber/**/*.ts"
+    ],
+    "cli": {
+      "entitiesDir": "src/models",
+      "migrationsDir": "src/infrastructure/db/postgres/migration",
+      "subscribersDir": "src/subscriber"
+    }
+  }
+]

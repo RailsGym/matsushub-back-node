@@ -1,0 +1,35 @@
+service: matsuhub-api
+# app and org for use with dashboard.serverless.com
+app: matsuhub-api
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+frameworkVersion: "2"
+plugins:
+  - serverless-webpack
+  - serverless-offline
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: ap-northeast-1
+  apiGateway:
+    minimumCompressionSize: 1024
+    shouldStartNameWithService: true
+    binaryMediaTypes:
+      - 'image/*'
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1'
+    STAGE: ${opt:stage, self:provider.stage, 'develop'}
+    FRONTEND_ORIGIN: ${file(./.serverless.tmp/frontend_origin.${opt:stage, self:provider.stage, 'local'}.txt), "http://localhost:3001"}
+
+functions:
+  app:
+    handler: src/entrypoint/api.handler
+    timeout: 30
+    events:
+      - http:
+          method: ANY
+          path: "/"
+      - http:
+          method: ANY
+          path: "/{any+}"
