@@ -1,5 +1,5 @@
 ## 概要
-matsuhubアプリで用いるAPIのServeless版
+matsuhubアプリで用いるAPIのServerless版
 
 ## Version
 - Express v4.17.1
